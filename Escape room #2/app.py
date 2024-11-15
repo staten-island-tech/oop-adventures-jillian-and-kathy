@@ -1,1 +1,1 @@
-print("Congrats! You've completed the first room, two more to go!")
+python.exe -m pip install --upgrade pip
