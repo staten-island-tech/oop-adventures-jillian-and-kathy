@@ -1,3 +1,3 @@
-import Room_3.png
-room3 = Room_3.png
-print(room3)
+from PIL import Image
+image = Image.open('Room_3.png')
+image.show()
