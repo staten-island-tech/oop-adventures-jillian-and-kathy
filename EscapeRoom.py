@@ -1,5 +1,11 @@
-if player == "__main__":
-    while True:
+import time
+
+def slow_print(text, delay = 0.05):
+    for char in text:
+        print(char, end = '', flush = True)
+        
+        
+        
         print("Welcome to the Neon Nexus, a sprawling megacity where neon lights flicker against the backdrop of rain-soaked streets.")
         print("You and your team are a group of underground hackers who have stumbled upon a corporation's dark secrets.")
         print("The megacorp has caught wind of your investigation and has locked you inside their secure facility.")
