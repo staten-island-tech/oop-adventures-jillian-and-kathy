@@ -15,28 +15,8 @@ pygame.display.set_caption("Escape Room")
 
 font = pygame.font.Font(None, 36)
 
-def wrap_text(text, font, max_width):
-    """Wrap text to fit within a specified width."""
-    words = text.split(' ')
-    lines = []
-    current_line = ""
-    
-    for word in words:
-        # Check if adding the word would exceed the max width
-        test_line = current_line + word + ' '
-        if font.size(test_line)[0] <= max_width:
-            current_line = test_line
-        else:
-            lines.append(current_line)  # Append current line to lines
-            current_line = word + ' '  # Start a new line with the current word
-            
-    if current_line:  # Add any remaining text
-        lines.append(current_line)
-        
-    return lines
-
-def slow_print(text, delay=0.1):
-    """Prints text to the console slowly, character by character."""
+def slow_print(text, delay=0.05):
+    """Prints text to the screen slowly, character by character."""
     current_text = ""
     for char in text:
         current_text += char
@@ -47,20 +27,32 @@ def slow_print(text, delay=0.1):
         time.sleep(delay)
 
 def main():
-    intro_text = (
-        "Welcome to the Neon Nexus, a sprawling megacity where neon lights flicker against the backdrop of rain-soaked streets."
-        " You and your team are a group of underground hackers who have stumbled upon a corporation's dark secrets."
-        " The megacorp has caught wind of your investigation and has locked you inside their secure facility."
-        " Your mission is to escape from three high-security rooms before the corporate enforcers arrive to silence you permanently."
-        " Time to get started!")
+    quotes = [
+        "Welcome to the Neon Nexus, a sprawling megacity where neon lights flicker against",
+        "the backdrop of rain-soaked streets.",
+        "You and your team are a group of underground hackers who have stumbled upon a",
+        "corporation's dark secrets.",
+        "The megacorp has caught wind of your investigation and has locked you inside",
+        "their secure facility.",
+        "Your mission is to escape from three high-security rooms before",
+        "the corporate enforcers arrive to silence you permanently.",
+        "Time to get started!"
+    ]
 
-    slow_print(intro_text, 0.1)
+    for quote in quotes:
+        slow_print(quote, 0.05)  # Print each quote slowly
+        time.sleep(1)  # Wait for 3 seconds before clearing the screen
+        screen.blit(background_image, (0, 0))  # Clear the text by redrawing the background
+        pygame.display.flip()  # Update the display
 
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
+    import first_room
+    first_room.main()
 
     pygame.quit()
     sys.exit()
