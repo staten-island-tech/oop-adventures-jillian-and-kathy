@@ -25,7 +25,11 @@ def slow_print(text, delay=0.05):
         time.sleep(delay)
 
 def main():
+<<<<<<< Updated upstream
     game = game()
+=======
+    game = Game()
+>>>>>>> Stashed changes
     text_display = TextDisplay(game)
     quotes = [
         "Congrats! You've completed the first escape room"
