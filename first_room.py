@@ -28,7 +28,7 @@ def slow_print(text, delay=0.05):
 
 def main():
     quotes = [
-        "Welcome to the first room!",
+        "Welcome to the first room!"
         
     ]
 
@@ -43,9 +43,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
-    import first_room
-    first_room.main()
 
     pygame.quit()
     sys.exit()
