@@ -4,8 +4,8 @@ import sys
 
 pygame.init()
 
-screen_width = 1080
-screen_height = 600
+screen_width = 1920
+screen_height = 1017
 
 background_image = pygame.image.load('image.jpg')  # Add your own background image
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
@@ -13,9 +13,9 @@ background_image = pygame.transform.scale(background_image, (screen_width, scree
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Escape Room #2")
 
-font = pygame.font.SysFont("Courier New", 30, bold = True)
+font = pygame.font.SysFont("Courier New", 50, bold = True)
 
-def slow_print(text, delay=2):
+def slow_print(text, delay=0.01):
     """Prints text to the screen slowly, character by character."""
     current_text = ""
     for char in text:
@@ -28,15 +28,15 @@ def slow_print(text, delay=2):
 
 def main():
     quotes = [
-        "Congrats! You've completed the first escape room.",
+        "Congrats! You've completed the first room, ",
         
     ]
 
     for quote in quotes:
-        slow_print(quote, 2)  # Print each quote slowly
-        time.sleep(1)  # Wait for 3 seconds before clearing the screen
-        screen.blit(background_image, (0, 0))  # Clear the text by redrawing the background
-        pygame.display.flip()  # Update the display
+        slow_print(quote, 0.01)  
+        time.sleep(1)  
+        screen.blit(background_image, (0, 0)) 
+        pygame.display.flip()  
 
     running = True
     while running:
