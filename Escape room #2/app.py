@@ -15,7 +15,7 @@ pygame.display.set_caption("Escape Room #2")
 
 font = pygame.font.SysFont("Courier New", 30, bold = True)
 
-def slow_print(text, delay=0.05):
+def slow_print(text, delay=2):
     """Prints text to the screen slowly, character by character."""
     current_text = ""
     for char in text:
