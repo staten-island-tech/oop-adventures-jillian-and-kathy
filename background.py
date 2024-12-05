@@ -21,8 +21,9 @@ pygame.display.set_caption("Escape Room")
 font = pygame.font.SysFont("Courier New", 34, bold = True, italic = True)
 
 # Define the clickable area (e.g., a rectangle for a button or object in the room)
-clickable_area1 = pygame.Rect(150, 290, 150, 220)  # Rectangle at (150, 290) with width 150 and height 220
-
+clickable_TV = pygame.Rect(150, 290, 150, 220)  # Rectangle at (150, 290) with width 150 and height 220
+clickable_plate = pygame.Rect(898, 590, 100, 60)  # Rectangle at (898, 570) with width 100 and height 50
+clickable_book = pygame.Rect(1060, 280, 95, 120)  # Rectangle at (898, 570) with width 100 and height 50
 
 def slow_print(text, delay=0.05):
     """Prints text to the screen slowly, character by character."""
@@ -40,7 +41,8 @@ def main():
     quotes = [
         "Welcome to the third and final escape room.",
         "Press on objects to play the puzzles and escape.",
-        "In order to make it out, find all 3 keys by completing puzzles."
+        "In order to make it out, find all 3 keys by completing puzzles.",
+        "Who was here last? I think they left something."
     ]
 
 
@@ -62,17 +64,51 @@ def main():
                 if event.button == 1:  # Left mouse button
                     mouse_x, mouse_y = pygame.mouse.get_pos()  # Get mouse position
                     
-                    # Check if the click is within the clickable area (rectangle)
-                    if clickable_area1.collidepoint(mouse_x, mouse_y):
+                    # Check if the click is within the clickable area 1(rectangle)
+                    if clickable_TV.collidepoint(mouse_x, mouse_y):
                         # Handle interaction (e.g., show a new message or trigger a puzzle)
-                        slow_print("You clicked on the TV monitor!", 0.03)
+                        slow_print("You found the camera TV monitor!", 0.03)
+                        time.sleep(0.5)
+                        slow_print("Complete this puzzle for the key and your next hint.", 0.03)
+                        time.sleep(0.5)
+                        slow_print("It looks like they went to get a book.", 0.03)
                         time.sleep(0.5)
                         screen.blit(background_image, (0, 0))  # Redraw the background
-                        pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 3)  # Redraw the rectangle
+                        pygame.draw.rect(screen, (255, 0, 0), clickable_TV, 3)  # Redraw the rectangle
+                        pygame.display.flip()
+
+                    # Check if the click is within the clickable area 2(rectangle)
+                    if clickable_plate.collidepoint(mouse_x, mouse_y):
+                        # Handle interaction (e.g., show a new message or trigger a puzzle)
+                        slow_print("You found the food plate!", 0.03)
+                        time.sleep(0.5)
+                        slow_print("Complete the puzzle for the key and a hint.", 0.03)
+                        time.sleep(0.5)
+                        slow_print("Check the cameras to see who was here.", 0.03)
+                        time.sleep(0.5)
+                        screen.blit(background_image, (0, 0))  # Redraw the background
+                        pygame.draw.rect(screen, (255, 0, 0), clickable_plate, 3)  # Redraw the rectangle
+                        pygame.display.flip()
+
+                    # Check if the click is within the clickable area 3(rectangle)
+                    if clickable_book.collidepoint(mouse_x, mouse_y):
+                        # Handle interaction (e.g., show a new message or trigger a puzzle)
+                        slow_print("You found the bookshelf!", 0.03)
+                        time.sleep(0.5)
+                        slow_print("Complete the final puzzle for the last key to escape.", 0.03)
+                        time.sleep(0.5)
+                        screen.blit(background_image, (0, 0))  # Redraw the background
+                        pygame.draw.rect(screen, (255, 0, 0), clickable_book, 3)  # Redraw the rectangle
                         pygame.display.flip()
 
         # Draw the clickable area (optional: for debugging purposes)
-        pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 3)  # Draw a red rectangle around the clickable area
+        pygame.draw.rect(screen, (255, 0, 0), clickable_TV, 3)  # Draw a red rectangle around the clickable area 1
+
+        # Draw the clickable area (optional: for debugging purposes)
+        pygame.draw.rect(screen, (255, 0, 0), clickable_plate, 3)  # Draw a red rectangle around the clickable area 2
+
+        # Draw the clickable area (optional: for debugging purposes)
+        pygame.draw.rect(screen, (255, 0, 0), clickable_book, 3)  # Draw a red rectangle around the clickable area 2
 
         pygame.display.flip()  # Make sure the screen updates after each event
 
