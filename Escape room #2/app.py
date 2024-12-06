@@ -15,8 +15,8 @@ pygame.display.set_caption("Escape Room #2")
 
 font = pygame.font.SysFont("Courier New", 50, bold = True)
 
-clickable_area1 = pygame.Rect(150, 290, 150, 220)
-clickable_area2 = pygame.Rect(895, 570, 100, 80)
+clickable_area1 = pygame.Rect(1300, 700, 150, 220)
+clickable_area2 = pygame.Rect(600, 700, 100, 80)
 
 
 def slow_print(text, delay=0.01):
@@ -59,7 +59,7 @@ def main():
                         slow_print("You've found a safe!", 0.03)
                         time.sleep(0.5)
                         screen.blit(background_image, (0, 0))  
-                        pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 3) 
+                        pygame.draw.rect(screen, (255,255, 255), clickable_area1, 3) 
                         pygame.display.flip()
 
 
@@ -67,16 +67,16 @@ def main():
                         slow_print("You've found a paper!", 0.03)
                         time.sleep(0.5)
                         screen.blit(background_image, (0, 0))  
-                        pygame.draw.rect(screen, (255, 0, 0), clickable_area2, 3)  
+                        pygame.draw.rect(screen, (255, 255, 255), clickable_area2, 3)  
                         pygame.display.flip()
-    screen.blit(background_image, (0, 0))
-    pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 3) 
-    pygame.draw.rect(screen, (255, 0, 0), clickable_area2, 3) 
-    pygame.display.flip()
+        screen.blit(background_image, (0, 0))
+        pygame.draw.rect(screen, (255, 255, 255), clickable_area1, 3) 
+        pygame.draw.rect(screen, (255, 255, 255), clickable_area2, 3) 
+        pygame.display.flip()
 
 
-pygame.quit()
-sys.exit()
+    pygame.quit()
+    sys.exit()
 
 if __name__ == "__main__":
     main()
