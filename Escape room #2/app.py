@@ -15,6 +15,10 @@ pygame.display.set_caption("Escape Room #2")
 
 font = pygame.font.SysFont("Courier New", 50, bold = True)
 
+clickable_area1 = pygame.Rect(150, 290, 150, 220)
+clickable_area2 = pygame.Rect(895, 570, 100, 80)
+
+
 def slow_print(text, delay=0.01):
     """Prints text to the screen slowly, character by character."""
     current_text = ""
@@ -25,6 +29,8 @@ def slow_print(text, delay=0.01):
         screen.blit(rendered_text, (50, 50))
         pygame.display.flip()
         time.sleep(delay)
+
+
 
 def main():
     quotes = [
@@ -44,71 +50,40 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-                pygame.quit()
-                sys.exit()
-if event.type == pygame.MOUSEBUTTONDOWN:
+
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     mouse_x, mouse_y = pygame.mouse.get_pos() 
                     if clickable_area1.collidepoint(mouse_x, mouse_y):
-                        slow_print("You clicked on the TV monitor!", 0.03)
+                        slow_print("You've found a safe!", 0.03)
                         time.sleep(0.5)
                         screen.blit(background_image, (0, 0))  
                         pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 3) 
                         pygame.display.flip()
 
 
-                    if clickable_area2.collidepoint(mouse_x, mouse_y):
-                        slow_print("You clicked on the food plate!", 0.03)
+                    elif clickable_area2.collidepoint(mouse_x, mouse_y):
+                        slow_print("You've found a paper!", 0.03)
                         time.sleep(0.5)
                         screen.blit(background_image, (0, 0))  
                         pygame.draw.rect(screen, (255, 0, 0), clickable_area2, 3)  
                         pygame.display.flip()
-pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 3) 
-pygame.draw.rect(screen, (255, 0, 0), clickable_area2, 3) 
-pygame.display.flip()
+    screen.blit(background_image, (0, 0))
+    pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 3) 
+    pygame.draw.rect(screen, (255, 0, 0), clickable_area2, 3) 
+    pygame.display.flip()
 
 
-
+pygame.quit()
+sys.exit()
 
 if __name__ == "__main__":
     main()
 
  
 
-#first puzzle
-""" class safe_puzzle():
-    def guess_code():
-        first_digit = 1
-        second_digit = 2
-        third_digit = 2
-        fourth_digit = 9
-        first = ("Guess the first digit: ")
-        if 'first' == first_digit:
-            print('Correct!')
-            if 'first' < first_digit:
-                print('Incorrect! Guess higher.')
-                if 'first' > first_digit:
-                    print('Incorrect! Guess lower.')
-                    second = ("Guess the second digit: ")
-                    if 'second' == second_digit:
-                        print('Correct')
-                        if 'second' < second_digit:
-                            print('Incorrect! Guess higher.')
-                            if 'second' > sceond_digit:
-                                print('Incorrect! Guess lower.')
-                                if 'third' == third_digit:
-                                    print('Correct')
-                                    if 'third' < third_digit:
-                                        print('Incorrect! Guess higher.')
-                                        if 'third' > third_digit:
-                                            print('Incorrect! Guess lower.')
-                                            if 'fourth' == fourth_digit:
-                                                print('Correct')
-                                                if 'fourth' < fourth_digit:
-                                                    print('Incorrect! Guess higher.')
-                                                    if 'fourth' > fourth_digit:
-                                                        print('Incorrect! Guess lower.')
-    guess_code() """
+
 
 
     
