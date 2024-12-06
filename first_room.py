@@ -55,6 +55,8 @@ def main():
                         screen.blit(background_image, (0, 0))
                         pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 3)
                         pygame.display.flip()
+                        import first_puzzle
+                        first_puzzle.main()
         pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 2)
         
         pygame.display.flip()
