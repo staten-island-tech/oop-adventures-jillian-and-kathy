@@ -30,7 +30,7 @@ def main():
     quotes = [
         "Welcome to the first room!",
         "To escape the room, find all 3 keys by completing puzzles.",
-        "I wonder what would happen if you clicked on a box?"
+        "I wonder what would happen if you clicked on the rug?"
         
     ]
 

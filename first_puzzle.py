@@ -13,7 +13,7 @@ background_image = pygame.transform.scale(background_image, (screen_width, scree
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Escape Room")
 
-font = pygame.font.SysFont("Courier New", 25, bold = True, italic = True)
+font = pygame.font.SysFont("Courier New", 30, bold = True, italic = True)
 
 def slow_print(text, delay=0.05):
     """Prints text to the screen slowly, character by character."""
@@ -28,7 +28,10 @@ def slow_print(text, delay=0.05):
 
 def main():
     quotes = [
-        "This is a Caesar Cipher."
+        "This is a Caesar Cipher.",
+        "Decipher the letters on the paper in order to get a code.",
+        "Once you're done deciphering, X out of the page.",
+        "Make sure you don't forget the code!!"
     ]
 
     for quote in quotes:
@@ -42,6 +45,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
+    import first_room2
+    first_room.main()
 
     pygame.quit()
     sys.exit()
