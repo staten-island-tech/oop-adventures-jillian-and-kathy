@@ -1,7 +1,6 @@
 import time
 import pygame
 import sys
-from bookpuzzle import book
 
 pygame.init()
 
@@ -13,6 +12,14 @@ screen_height = 1017
 background_image = pygame.image.load('Room_3.png')  # Add your own background image
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
+book_image = pygame.image.load('openbook.jpg')  # Add your own background image
+book_image = pygame.transform.scale(book_image, (screen_width, screen_height))
+
+camera_image = pygame.image.load('surveillance monitor.jpg')  # Add your own background image
+camera_image = pygame.transform.scale(camera_image, (screen_width, screen_height))
+
+plate_image = pygame.image.load('emptyplate.jpg')  # Add your own background image
+plate_image = pygame.transform.scale(plate_image, (screen_width, screen_height))
 
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Escape Room")
@@ -55,6 +62,14 @@ def main():
 
     running = True
     while running:
+        # Draw the clickable area (optional: for debugging purposes)
+        pygame.draw.rect(screen, (255, 0, 0), clickable_TV, 3)  # Draw a red rectangle around the clickable area 1
+
+        # Draw the clickable area (optional: for debugging purposes)
+        pygame.draw.rect(screen, (255, 0, 0), clickable_plate, 3)  # Draw a red rectangle around the clickable area 2
+
+        # Draw the clickable area (optional: for debugging purposes)
+        pygame.draw.rect(screen, (255, 0, 0), clickable_book, 3)  # Draw a red rectangle around the clickable area 2
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -73,8 +88,7 @@ def main():
                         time.sleep(0.5)
                         slow_print("It looks like they went to get a book.", 0.03)
                         time.sleep(0.5)
-                        screen.blit(background_image, (0, 0))  # Redraw the background
-                        pygame.draw.rect(screen, (255, 0, 0), clickable_TV, 3)  # Redraw the rectangle
+                        screen.blit(camera_image, (0, 0))  # Redraw the background
                         pygame.display.flip()
 
                     # Check if the click is within the clickable area 2(rectangle)
@@ -86,8 +100,7 @@ def main():
                         time.sleep(0.5)
                         slow_print("Check the cameras to see who was here.", 0.03)
                         time.sleep(0.5)
-                        screen.blit(background_image, (0, 0))  # Redraw the background
-                        pygame.draw.rect(screen, (255, 0, 0), clickable_plate, 3)  # Redraw the rectangle
+                        screen.blit(plate_image, (0, 0))  # Redraw the background
                         pygame.display.flip()
 
                     # Check if the click is within the clickable area 3(rectangle)
@@ -97,20 +110,10 @@ def main():
                         time.sleep(0.5)
                         slow_print("Complete the final puzzle for the last key to escape.", 0.03)
                         time.sleep(0.5)
-                        screen.blit(background_image, (0, 0))  # Redraw the background
-                        pygame.draw.rect(screen, (255, 0, 0), clickable_book, 3)  # Redraw the rectangle
+                        screen.blit(book_image, (0, 0))  # Redraw the background
                         pygame.display.flip()
 
-        # Draw the clickable area (optional: for debugging purposes)
-        pygame.draw.rect(screen, (255, 0, 0), clickable_TV, 3)  # Draw a red rectangle around the clickable area 1
-
-        # Draw the clickable area (optional: for debugging purposes)
-        pygame.draw.rect(screen, (255, 0, 0), clickable_plate, 3)  # Draw a red rectangle around the clickable area 2
-
-        # Draw the clickable area (optional: for debugging purposes)
-        pygame.draw.rect(screen, (255, 0, 0), clickable_book, 3)  # Draw a red rectangle around the clickable area 2
-
-        pygame.display.flip()  # Make sure the screen updates after each event
+        """ pygame.display.flip()  # Make sure the screen updates after each event """
 
     pygame.quit()
     sys.exit()
