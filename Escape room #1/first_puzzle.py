@@ -31,7 +31,8 @@ def main():
         "This is a Caesar Cipher.",
         "Decipher the letters on the paper in order to get a code.",
         "Once you're done deciphering, X out of the page.",
-        "Make sure you don't forget the code!!"
+        "Make sure you don't forget the code!!",
+        "Maybe you should write it down?"
     ]
 
     for quote in quotes:
@@ -47,7 +48,7 @@ def main():
                 running = False
 
     import first_room2
-    first_room.main()
+    first_room2.main()
 
     pygame.quit()
     sys.exit()
