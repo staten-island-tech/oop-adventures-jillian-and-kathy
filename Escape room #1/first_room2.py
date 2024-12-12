@@ -49,8 +49,6 @@ def main():
                     if clickable_area1.collidepoint(mouse_x, mouse_y):
                         slow_print("There's a lock on the fridge.", 0.03)
                         time.sleep(2)
-                        slow_print("Try putting in the code you found from the Caesar Cipher.", 0.03)
-                        time.sleep(2)
                         screen.blit(background_image, (0, 0))
                         pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 3)
                         pygame.display.flip()
