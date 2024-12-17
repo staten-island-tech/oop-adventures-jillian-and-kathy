@@ -37,7 +37,7 @@ def slow_print(text, delay=0.01):
 def main():
     quotes = [
         "Welcome to the second room,"
-        "you only have x minutes to find all of the keys and escape"
+        "you only have 8 minutes to find all of the keys and escape"
         
     ]
 
@@ -64,7 +64,7 @@ def main():
                         pygame.draw.rect(screen, (255,255, 255), clickable_area1, 3) 
                         pygame.display.flip()
                         import puzzle1
-                        Puzzle1.main()
+                        puzzle1.Puzzle1()
 
                     elif clickable_area2.collidepoint(mouse_x, mouse_y):
                         slow_print("You've found a paper!", 0.03)
