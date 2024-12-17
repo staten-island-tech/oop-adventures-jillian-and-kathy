@@ -18,15 +18,12 @@ while infinite == True:
         for letter in range(len(enter)):
             if enter[letter] == word[letter]:
                 print(enter[letter], "is correct and in the right spot")
+                double.append(enter[letter])
             elif enter[letter] in word and enter[letter] not in double:
                 print(enter[letter], "is correct but in the wrong spot")
                 double.append(enter[letter])
-            elif enter[letter] not in word:
+            elif enter[letter] not in word or enter[letter] in double:
                 print(enter[letter], "is not in the word")
-
-
-
-
 
 
 """ class book():
