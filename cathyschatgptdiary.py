@@ -64,3 +64,5 @@ class puzzle1():
                 if guess ==  correct_digits[i]:
                     print('Your guess is correct!')
     get_all_digits()
+
+    

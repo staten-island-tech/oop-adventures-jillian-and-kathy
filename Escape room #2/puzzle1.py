@@ -1,26 +1,21 @@
 import pygame
 import sys
 
-
-
-
-
-
-
-class puzzle1():
+class Puzzle1():
+    def main():
+         pygame.display.set_caption("safe")
     def __init__(self):
         pygame.init()
         self.screen_width = 1920
         self.screen_height = 1017
         self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
-        self.messages =  ('This is a safe, to open it you have to get the four-digit code right. I wonder whats inside?')
-        pygame.display.set_caption("safe")
+        self.messages =  ['This is a safe, to open it you have to get the four-digit code right. I wonder whats inside Hint: use your resources to make this process faster']
         self.background_image = pygame.image.load('output.jpg')
         self.background_image = pygame.transform.scale(self.background_image, (self.screen_width, self.screen_height))
-        self.font = pygame.font.SysFont("Courier New", 50, bold = True)
+        self.font = pygame.font.SysFont("Courier New", 20, bold = True)
         self.correct_digits = [1, 2, 2, 9]
         self.current_digit = 0
-        self.guess_hisory = []
+        self.guess_history = []
         self.user_input = ''
     def draw_screen(self):
         self.screen.blit(self.background_image,(0, 0))
@@ -29,12 +24,12 @@ class puzzle1():
             self.screen.blit(text, (50, 50 + i * 60))
         digit_message = f'Guess the digit {self.current_digit + 1}: (Guess a number from 1-9)'
         digit_text = self.font.render(digit_message, True, (255, 255, 255))
-        self.screen.blit(digit_text, (50, 400))
+        self.screen.blit(digit_text, (600, 100))
         input_text = self.font.render(self.user_input, True, (255, 255, 0))
-        self.screen.blit(input_text, (50, 450))
+        self.screen.blit(input_text, (1350, 100))
         history_text = f'Guess history: {self.guess_history}'
         history_rendered = self.font.render(history_text, True, (255, 255, 255))
-        self.screen.blit(history_rendered, (50, 500))
+        self.screen.blit(history_rendered, (600, 125))
         pygame.display.update()
     def handle_input(self):
         for event in pygame.event.get():
@@ -44,7 +39,7 @@ class puzzle1():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     if self.user_input.isdigit() and self.user_input != '':
-                        guess = int(Self.user_input)
+                        guess = int(self.user_input)
                         self.guess_history.append(guess)
                         self.check_guess(guess)
                         self.user_input = ''
@@ -53,7 +48,7 @@ class puzzle1():
                 else:
                     self.user_input += event.unicode
     def check_guess(self, guess):
-        if guess == self.correct_digits[self.current_digits]:
+        if guess == self.correct_digits[self.current_digit]:
             self.messages.append('Your guess is correct!')
             self.current_digit += 1
             if self.current_digit >= len(self.correct_digits):
@@ -67,9 +62,13 @@ class puzzle1():
         while True:
             self.handle_input()
             self.draw_screen()
+    
+
 if __name__ == '__main__':
-    game = puzzle1()
+    Puzzle1.main()
+    game = Puzzle1()
     game.run()
+    
 
     """ def get_all_digits():
         for i in range(4):
