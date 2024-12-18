@@ -115,6 +115,7 @@ class mainground:
                             time.sleep(0.5)
                             screen.blit(book_image, (0, 0))  # Redraw the background
                             pygame.display.flip()
+                            from bookpuzzle import WordleGame 
 
             # Draw the clickable area (optional: for debugging purposes)
             pygame.draw.rect(screen, (255, 0, 0), clickable_TV, 3)  # Draw a red rectangle around the clickable area 1
