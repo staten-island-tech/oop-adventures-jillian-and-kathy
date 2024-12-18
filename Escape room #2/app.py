@@ -63,8 +63,11 @@ def main():
                         screen.blit(background_image, (0, 0))  
                         pygame.draw.rect(screen, (255,255, 255), clickable_area1, 3) 
                         pygame.display.flip()
-                        import puzzle1
-                        puzzle1.Puzzle1()
+                        from puzzle1 import Puzzle1
+                        if __name__ == '__main__':
+                            game = Puzzle1()
+                            game.run()
+                        
 
                     elif clickable_area2.collidepoint(mouse_x, mouse_y):
                         slow_print("You've found a paper!", 0.03)

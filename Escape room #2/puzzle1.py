@@ -2,8 +2,6 @@ import pygame
 import sys
 
 class Puzzle1():
-    def main():
-         pygame.display.set_caption("safe")
     def __init__(self):
         pygame.init()
         self.screen_width = 1920
@@ -17,6 +15,7 @@ class Puzzle1():
         self.current_digit = 0
         self.guess_history = []
         self.user_input = ''
+        self.game_over = False
     def draw_screen(self):
         self.screen.blit(self.background_image,(0, 0))
         for i, message in enumerate(self.messages):
@@ -53,6 +52,7 @@ class Puzzle1():
             self.current_digit += 1
             if self.current_digit >= len(self.correct_digits):
                 self.messages.append("You've opened the safe!")
+                self.game_over == True
         else:
             if guess < self.correct_digits[self.current_digit]:
                 self.messages.append('Your guess is too low! Try again!')
@@ -62,10 +62,13 @@ class Puzzle1():
         while True:
             self.handle_input()
             self.draw_screen()
+            if self.game_over:
+                pygame.time.delay(2000)
+                break
+    pygame.quit()
     
 
 if __name__ == '__main__':
-    Puzzle1.main()
     game = Puzzle1()
     game.run()
     
