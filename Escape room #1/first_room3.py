@@ -28,7 +28,7 @@ def slow_print(text, delay=0.05):
 
 def main():
     quotes = [
-            "I wonder what that metal box is?"
+            "Looks there's a handheld game console that fell out."
     ]
 
     for quote in quotes:
