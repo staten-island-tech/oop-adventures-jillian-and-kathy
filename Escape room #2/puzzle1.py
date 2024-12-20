@@ -1,6 +1,5 @@
 import pygame
 import sys
-
 class Puzzle1():
     def __init__(self):
         pygame.init()
@@ -63,9 +62,10 @@ class Puzzle1():
             self.handle_input()
             self.draw_screen()
             if self.game_over:
-                pygame.time.delay(2000)
-                break
-    pygame.quit()
+                from key import Key
+                if __name__ == '__main__':
+                    game = Key()
+                    game.main()
     
 
 if __name__ == '__main__':
