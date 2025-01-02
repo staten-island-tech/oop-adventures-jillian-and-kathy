@@ -1,5 +1,6 @@
 import pygame
 import sys
+import time
 from key import Key
 
 class Puzzle1():
@@ -64,6 +65,7 @@ class Puzzle1():
             self.handle_input()
             self.draw_screen()
             if self.game_over:
+                pygame.time.delay(2000)
                 self.start_key()
                 break
     def start_key(self):
