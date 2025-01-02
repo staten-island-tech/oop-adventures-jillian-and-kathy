@@ -57,10 +57,12 @@ class Lock():
     def check_guess(self, guess):
         if self.current_digit < len(self.correct_digits):
             if guess == self.correct_digits[self.current_digit]:
-                self.messages.append('What you entered is the correct!')
+                self.messages.append('What you entered is the correct! Enter the next digit:')
                 self.current_digit += 1
                 if self.current_digit >= len(self.correct_digits):
                     self.messages.append("You've unlocked the safe!")
+                    import first_room3
+                    first_room3.main()
             else:
                 self.messages.append("That's incorrect! Try again!")
     def run(self):

@@ -14,7 +14,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Escape Room")
 
 font = pygame.font.SysFont("Courier New", 30, bold = True, italic = True)
-
+clickable_area1 = pygame.Rect(760, 760, 300, 190)
 
 def slow_print(text, delay=0.05):
     current_text = ""
@@ -28,12 +28,9 @@ def slow_print(text, delay=0.05):
 
 def main():
     quotes = [
-            "Looks like there's a handheld game console that fell out.",
-            "You will have to complete a tiles game.",
-            "In order to win, you will have to get a score of 20 or more.",
-            "Ready",
-            "Set",
-            "...GO!"
+        "You have recieved a key!",
+        "Now you can unlock the door to the next room."
+        
     ]
 
     for quote in quotes:
@@ -41,19 +38,14 @@ def main():
         time.sleep(1)
         screen.blit(background_image, (0, 0))
         pygame.display.flip()
-        
 
     running = True
-    import tiles_game
-    tiles_game.main()
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
-
         
-    pygame.display.flip()
+        pygame.display.flip()
 
 
     pygame.quit()
@@ -61,5 +53,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
