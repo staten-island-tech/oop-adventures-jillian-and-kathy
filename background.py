@@ -1,7 +1,7 @@
 import time
 import pygame
 import sys
-from bookpuzzle import WordleGame
+from bookpuzzle import MiniPuzzleGame
 
 pygame.init()
 
@@ -111,8 +111,10 @@ class mainground:
                             self.screen.blit(self.background_image, (0, 0))  # Redraw background
                             self.screen.blit(self.book_image, (0, 0))  # Show book image
                             pygame.display.flip()
-                            bookpuzzle = WordleGame(word="debug", hint="Related to fixing code")  # Remove screen and background_image here
-                            bookpuzzle.play_game(self.screen, self.font, self)  # Pass screen, font, and game instance instead
+
+                            # Start the MiniPuzzleGame after clicking the book
+                            mini_game = MiniPuzzleGame(width=1920, height=1017, player_size=50, target_size=30, player_speed=5, num_targets=5)
+                            mini_game.game_loop()  # Start the mini game
 
             pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_TV, 3)
             pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_plate, 3)
