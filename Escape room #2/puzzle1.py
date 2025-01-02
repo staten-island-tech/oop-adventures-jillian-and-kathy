@@ -1,5 +1,7 @@
 import pygame
 import sys
+from key import Key
+
 class Puzzle1():
     def __init__(self):
         pygame.init()
@@ -51,7 +53,7 @@ class Puzzle1():
             self.current_digit += 1
             if self.current_digit >= len(self.correct_digits):
                 self.messages.append("You've opened the safe!")
-                self.game_over == True
+                self.game_over = True
         else:
             if guess < self.correct_digits[self.current_digit]:
                 self.messages.append('Your guess is too low! Try again!')
@@ -62,11 +64,12 @@ class Puzzle1():
             self.handle_input()
             self.draw_screen()
             if self.game_over:
-                from key import Key
-                if __name__ == '__main__':
-                    game = Key()
-                    game.main()
-    
+                self.start_key()
+                break
+    def start_key(self):
+        key = Key()
+        key.main()
+
 
 if __name__ == '__main__':
     game = Puzzle1()

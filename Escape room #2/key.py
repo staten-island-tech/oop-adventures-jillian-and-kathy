@@ -21,6 +21,7 @@ class Key():
             self.screen.blit(self.background_image, (0, 0))
             self.rendered_text = self.font.render(self.current_text, True, (255, 255, 255))
             self.screen.blit(self.rendered_text, (50, 50))
+            self.game_over = False
             pygame.display.flip()
             time.sleep(delay)
     def main(self):
@@ -53,7 +54,8 @@ class Key():
                             from return_app import main
                             if __name__ == '__main__':
                                 game = main()
-                                game.main()
+                                game.main
+
 
 if __name__ == '__main__':
     game = Key()
