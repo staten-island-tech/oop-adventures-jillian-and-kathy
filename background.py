@@ -111,10 +111,9 @@ class mainground:
                             self.screen.blit(self.background_image, (0, 0))  # Redraw background
                             self.screen.blit(self.book_image, (0, 0))  # Show book image
                             pygame.display.flip()
-
                             # Start the MiniPuzzleGame after clicking the book
-                            mini_game = MiniPuzzleGame(width=1920, height=1017, player_size=50, target_size=30, player_speed=5, num_targets=5)
-                            mini_game.game_loop()  # Start the mini game
+                            mini_game = MiniPuzzleGame(width=1920, height=1017, player_size=50, target_size=30, player_speed=8, num_targets=10)
+                            mini_game.game_loop()
 
             pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_TV, 3)
             pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_plate, 3)
