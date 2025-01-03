@@ -217,20 +217,19 @@ while True:
         font = pygame.font.Font(None, 74)
         if won_game:
             end_text = font.render('You Won!', True, BLACK)
-            out_text = font.render('Click to go to the next room.', True, BLACK)
-            # Displaying the victory message, but not importing immediately
+            out_text = font.render('Click the screen to move on.', True, BLACK)
+            screen.blit(end_text, (SCREEN_WIDTH // 2 - end_text.get_width() // 2, SCREEN_HEIGHT // 2 - end_text.get_height()))
             screen.blit(out_text, (SCREEN_WIDTH // 2 - out_text.get_width() // 2, SCREEN_HEIGHT // 2 + 70))
-            
-            # Wait for user input to import first_room4.py
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    # Import first_room4.py when user clicks
                     import first_room4
-                    pygame.quit()  # Quit the current game after importing
-                    sys.exit()  # Make sure to exit after importing
+                    first_room4.main()
+                    pygame.quit()
+                    sys.exit()
                     break
 
         else:
@@ -246,14 +245,13 @@ while True:
         
         pygame.display.flip()
 
-        # Check for restart on mouse click for game over
         if not won_game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    reset_game()  # Restart the game
+                    reset_game()
                     break
 
 if __name__ == "__main__":
