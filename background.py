@@ -3,6 +3,7 @@ import pygame
 import sys
 from bookpuzzle import MiniPuzzleGame
 
+
 pygame.init()
 
 screen_width = 1920
@@ -111,9 +112,12 @@ class mainground:
                             self.screen.blit(self.background_image, (0, 0))  # Redraw background
                             self.screen.blit(self.book_image, (0, 0))  # Show book image
                             pygame.display.flip()
+                            self.slow_print("Collect all 11 blue squares in TEN SECONDS using arrow keys to move on.", 0.03)
+                            time.sleep(0.5)
                             # Start the MiniPuzzleGame after clicking the book
-                            mini_game = MiniPuzzleGame(width=1920, height=1017, player_size=50, target_size=30, player_speed=8, num_targets=10)
+                            mini_game = MiniPuzzleGame(width=1920, height=1017, player_size=50, target_size=30, player_speed=7.2, num_targets=11)
                             mini_game.game_loop()
+
 
             pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_TV, 3)
             pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_plate, 3)

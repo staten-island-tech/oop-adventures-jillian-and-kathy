@@ -3,26 +3,24 @@ import random
 import sys
 
 class MiniPuzzleGame:
-    def __init__(self, width=800, height=600, player_size=50, target_size=30, player_speed=5, num_targets=5, time_limit=10000):
-        # Initialize Pygame
+    def __init__(self, width=800, height=600, player_size=50, target_size=30, player_speed=7.2, num_targets=11, time_limit=10000):
+        
         pygame.init()
         
-        # Game settings
         self.width = width
         self.height = height
         self.player_size = player_size
         self.target_size = target_size
         self.player_speed = player_speed
         self.num_targets = num_targets
-        self.time_limit = time_limit  # 10 seconds time limit in milliseconds
+        self.time_limit = time_limit
         
-        # Load the background image (open book)
         self.background_image = pygame.image.load('openbook.jpg')
         self.background_image = pygame.transform.scale(self.background_image, (self.width, self.height))
 
         # Initialize screen
         self.screen = pygame.display.set_mode((self.width, self.height))
-        pygame.display.set_caption("Minipuzzle Game")
+        pygame.display.set_caption("Bookpuzzle Game")
         
         # Colors
         self.RED = (255, 0, 0)
@@ -38,15 +36,29 @@ class MiniPuzzleGame:
             self.targets.append(pygame.Rect(x, y, self.target_size, self.target_size))
         
         self.font = pygame.font.Font(None, 74)
-        self.timer_font = pygame.font.Font(None, 36)  # Smaller font for the timer
+        self.timer_font = pygame.font.Font(None, 54)
+    
+    def reset_game(self):
+        """Reset game state for a new game"""
+        self.player.x = self.width // 2
+        self.player.y = self.height // 2
+        self.targets = []
+        for _ in range(self.num_targets):
+            x = random.randint(0, self.width - self.target_size)
+            y = random.randint(0, self.height - self.target_size)
+            self.targets.append(pygame.Rect(x, y, self.target_size, self.target_size))
     
     def game_loop(self):
+        """Main game loop"""
+        while True:
+            self.start_game()  # Start the game each time the user restarts
+            
+    def start_game(self):
         collected_targets = 0
         clock = pygame.time.Clock()
         start_time = pygame.time.get_ticks()  # Get the start time
         game_over = False  # Flag to track if the game is over (either win or time's up)
-        self.slow_print("Collect all 10 blue squares in TEN SECONDS using arrow keys to move on.", 0.03)
-        time.sleep(0.5)
+        
         while True:
             elapsed_time = pygame.time.get_ticks() - start_time  # Calculate elapsed time
             remaining_time = max(0, self.time_limit - elapsed_time)  # Remaining time (cannot be negative)
@@ -60,11 +72,11 @@ class MiniPuzzleGame:
                     game_over_text = self.font.render("Time's up!", True, (255, 0, 0))
                     self.screen.blit(game_over_text, (self.width // 2 - game_over_text.get_width() // 2, self.height // 2 - game_over_text.get_height() // 2))
                     pygame.display.flip()
-                    pygame.time.wait(2000)  # Show the "Time's up!" message for 2 seconds
-                    pygame.quit()
-                    sys.exit()
+                    pygame.time.wait(2000)  # Wait before restarting
+                    self.ask_restart()
+                    return
 
-            self.screen.blit(self.background_image, (0, 0))  # Use the open book as the background
+            self.screen.blit(self.background_image, (0, 0))
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -100,8 +112,10 @@ class MiniPuzzleGame:
                 game_over = True  # Set the game_over flag to True
                 pygame.display.flip()
                 pygame.time.wait(2000)  # Show the win message for 2 seconds
-                pygame.quit()
-                sys.exit()
+                winkey_text = self.font.render("You gained 1 escape key!", True, (255, 255, 255))
+                self.screen.blit(winkey_text, (self.width // 2 - winkey_text.get_width() // 2, self.height // 2 + 50))
+                pygame.time.wait(2000)
+                pygame.display.flip()
 
             # Draw the countdown timer in the top-left corner
             timer_text = self.timer_font.render(f"Time: {remaining_seconds}s", True, (255, 255, 255))
@@ -109,3 +123,23 @@ class MiniPuzzleGame:
 
             pygame.display.flip()
             clock.tick(60)
+
+    def ask_restart(self):
+        """Ask the player if they want to restart the game"""
+        restart_text = self.font.render("Press 'R' to Restart", True, (255, 255, 255))
+        self.screen.blit(restart_text, (self.width // 2 - restart_text.get_width() // 2, self.height // 2 + 50))
+        pygame.display.flip()
+        
+        waiting_for_input = True
+        while waiting_for_input:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_r:
+                        self.reset_game()  # Reset the game state
+                        waiting_for_input = False  # Exit the loop to start a new game
+                    elif event.key == pygame.K_ESCAPE:
+                        pygame.quit()
+                        sys.exit()
