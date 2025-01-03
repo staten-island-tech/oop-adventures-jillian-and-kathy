@@ -1,6 +1,7 @@
 import pygame
 import sys
 import time
+from return_app import main
 
 class Key():
     def __init__(self):
@@ -34,7 +35,6 @@ class Key():
             time.sleep(1)  
             self.screen.blit(self.background_image, (0, 0)) 
             pygame.display.flip()  
-
         running = True
         while running:
             for event in pygame.event.get():
@@ -54,10 +54,12 @@ class Key():
                             from return_app import main
                             if __name__ == '__main__':
                                 game = main()
-                                game.main
+                                game.main()
 
 
 if __name__ == '__main__':
     game = Key()
     game.main()
+
+
 
