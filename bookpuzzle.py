@@ -112,9 +112,10 @@ class MiniPuzzleGame:
                 game_over = True  # Set the game_over flag to True
                 pygame.display.flip()
                 pygame.time.wait(2000)  # Show the win message for 2 seconds
-                winkey_text = self.font.render("You gained 1 escape key!", True, (255, 255, 255))
-                self.screen.blit(winkey_text, (self.width // 2 - winkey_text.get_width() // 2, self.height // 2 + 50))
-                pygame.time.wait(2000)
+                self.screen.blit(self.background_image, (0, 0))
+                pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_TV, 3)
+                pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_plate, 3)
+                pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_book, 3)
                 pygame.display.flip()
 
             # Draw the countdown timer in the top-left corner
@@ -140,6 +141,3 @@ class MiniPuzzleGame:
                     if event.key == pygame.K_r:
                         self.reset_game()  # Reset the game state
                         waiting_for_input = False  # Exit the loop to start a new game
-                    elif event.key == pygame.K_ESCAPE:
-                        pygame.quit()
-                        sys.exit()

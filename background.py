@@ -3,7 +3,6 @@ import pygame
 import sys
 from bookpuzzle import MiniPuzzleGame
 
-
 pygame.init()
 
 screen_width = 1920
@@ -93,17 +92,6 @@ class mainground:
                             self.screen.blit(self.camera_image, (0, 0))  # Show camera image
                             pygame.display.flip()
 
-                        if self.clickable_plate.collidepoint(mouse_x, mouse_y):
-                            self.slow_print("You found the food plate!", 0.03)
-                            time.sleep(0.5)
-                            self.slow_print("Complete the puzzle for the key and a hint.", 0.03)
-                            time.sleep(0.5)
-                            self.slow_print("Check the cameras to see who was here.", 0.03)
-                            time.sleep(0.5)
-                            self.screen.blit(self.background_image, (0, 0))  # Redraw background
-                            self.screen.blit(self.plate_image, (0, 0))  # Show plate image
-                            pygame.display.flip()
-
                         if self.clickable_book.collidepoint(mouse_x, mouse_y):
                             self.slow_print("You found the bookshelf!", 0.03)
                             time.sleep(0.5)
@@ -117,12 +105,11 @@ class mainground:
                             # Start the MiniPuzzleGame after clicking the book
                             mini_game = MiniPuzzleGame(width=1920, height=1017, player_size=50, target_size=30, player_speed=7.2, num_targets=11)
                             mini_game.game_loop()
-
-
+            
+            self.screen.blit(self.background_image, (0, 0))
             pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_TV, 3)
             pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_plate, 3)
             pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_book, 3)
-
             pygame.display.flip()
 
         pygame.quit()
