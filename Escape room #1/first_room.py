@@ -98,13 +98,15 @@ if __name__ == "__main__":
 import time
 import pygame
 import sys
+from keys import Key
+from inventory import Inventory
 
 pygame.init()
 
 # Constants
 screen_width = 1920
 screen_height = 1017
-background_image = pygame.image.load('start_room_official.jpg')
+background_image = pygame.image.load('start_room_official.jpg')  # Ensure this file exists
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
 screen = pygame.display.set_mode((screen_width, screen_height))
@@ -114,7 +116,7 @@ font = pygame.font.SysFont("Courier New", 30, bold=True, italic=True)
 clickable_area1 = pygame.Rect(760, 760, 300, 190)
 
 # Slow print function
-def slow_print(text, delay=0.05):
+def slow_print(text, delay=0.10):
     current_text = ""
     for char in text:
         current_text += char
@@ -124,12 +126,6 @@ def slow_print(text, delay=0.05):
         pygame.display.flip()
         time.sleep(delay)
 
-# Inventory Class
-class Inventory:
-    def __init__(self):
-        self.keys = 0  # Assuming keys are counted as integers
-
-# First Room Class
 class FirstRoom:
     def __init__(self, inventory):
         self.inventory = inventory
@@ -150,14 +146,11 @@ class FirstRoom:
                         if clickable_area1.collidepoint(mouse_x, mouse_y):
                             slow_print("You've found something under the rug!", 0.03)
                             time.sleep(2)
-                            # Update the screen after the slow print operation
                             screen.blit(background_image, (0, 0))
                             pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 3)
                             pygame.display.flip()
-                            # For the example, you could call another function here
-                            # For example, if you want to go to a puzzle: 
                             import first_puzzle
-                            first_puzzle.main()  # Make sure `first_puzzle.py` exists and implements a `main` function
+                            first_puzzle.main()
 
             # Draw the clickable area
             pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 2)
@@ -166,16 +159,23 @@ class FirstRoom:
             clock.tick(30)
 
     def draw_inventory(self, screen):
+        # Set font for inventory
         font = pygame.font.Font(None, 36)
         inventory_text = f"Keys: {self.inventory.keys}"
         text_surface = font.render(inventory_text, True, (0, 0, 0))
-        screen.blit(text_surface, (10, 10))
+
+        # Get text size to position it in the top right corner
+        text_width, text_height = text_surface.get_size()
+
+        # Position text in the top right corner with some margin
+        position_x = screen_width - text_width - 10  # 10 pixels from the right
+        position_y = 10  # 10 pixels from the top
+        
+        screen.blit(text_surface, (position_x, position_y))
 
 def main():
-    # Create inventory
     inventory = Inventory()
 
-    # Display introductory quotes
     quotes = [
         "Welcome to the first room!",
         "To escape the room, find all 3 keys by completing puzzles.",
