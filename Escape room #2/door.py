@@ -1,17 +1,15 @@
 import pygame
 import sys
 import time
-from return_app import main
 
-class Key():
+class Door():
     def __init__(self):
         pygame.init()
         self.screen_width = 1920
         self.screen_height = 1017
-        self.background_image = pygame.image.load('key.jpg')  # Add your own background image
+        self.background_image = pygame.image.load('door.jpg')  # Add your own background image
         self.background_image = pygame.transform.scale(self.background_image, (self.screen_width, self.screen_height))
         self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
-        pygame.display.set_caption("Key")
         self.font = pygame.font.SysFont("Courier New", 25, bold = True)
         self.clickable_area1 = pygame.Rect(750, 200, 400, 500)
     def slow_print(self, text, delay=0.01):
@@ -27,7 +25,7 @@ class Key():
             time.sleep(delay)
     def main(self):
         quotes = [
-            "Congrats! You've opened the safe, it looks like theres a key inside...click on it to equip it"
+            "This is the door, looks like there's a lock on it"
         ]
 
         for quote in quotes:
@@ -46,7 +44,7 @@ class Key():
                     if event.button == 1:
                         mouse_x, mouse_y = pygame.mouse.get_pos() 
                         if self.clickable_area1.collidepoint(mouse_x, mouse_y):
-                            self.slow_print("You've equipped a key, press on the 'X' to exit", 0.03)
+                            self.slow_print("You need a key to unlock this door.", 0.03)
                             time.sleep(0.5)
                             self.screen.blit(self.background_image, (0, 0))  
                             pygame.draw.rect(self.screen, (255,255, 255), self.clickable_area1, 3) 
@@ -58,8 +56,6 @@ class Key():
 
 
 if __name__ == '__main__':
-    game = Key()
+    game = Door()
     game.main()
-
-
 
