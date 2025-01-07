@@ -98,8 +98,7 @@ if __name__ == "__main__":
 import time
 import pygame
 import sys
-from keys import Key
-from inventory import Inventory
+from key import Key
 
 pygame.init()
 
@@ -127,21 +126,19 @@ def slow_print(text, delay=0.10):
         time.sleep(delay)
 
 class FirstRoom:
-    def __init__(self, inventory):
-        self.inventory = inventory
+    def __init__(self):
+        self.clock = pygame.time.Clock()
+        self.running = True
 
     def run(self):
-        clock = pygame.time.Clock()
-        running = True
-
-        while running:
+        while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if event.button == 1:  # Left mouse button
+                    if event.button == 1:
                         mouse_x, mouse_y = pygame.mouse.get_pos()
                         if clickable_area1.collidepoint(mouse_x, mouse_y):
                             slow_print("You've found something under the rug!", 0.03)
@@ -152,29 +149,11 @@ class FirstRoom:
                             import first_puzzle
                             first_puzzle.main()
 
-            # Draw the clickable area
             pygame.draw.rect(screen, (255, 0, 0), clickable_area1, 2)
-            self.draw_inventory(screen)
             pygame.display.flip()
-            clock.tick(30)
-
-    def draw_inventory(self, screen):
-        # Set font for inventory
-        font = pygame.font.Font(None, 36)
-        inventory_text = f"Keys: {self.inventory.keys}"
-        text_surface = font.render(inventory_text, True, (0, 0, 0))
-
-        # Get text size to position it in the top right corner
-        text_width, text_height = text_surface.get_size()
-
-        # Position text in the top right corner with some margin
-        position_x = screen_width - text_width - 10  # 10 pixels from the right
-        position_y = 10  # 10 pixels from the top
-        
-        screen.blit(text_surface, (position_x, position_y))
+            self.clock.tick(30)
 
 def main():
-    inventory = Inventory()
 
     quotes = [
         "Welcome to the first room!",
@@ -188,8 +167,7 @@ def main():
         screen.blit(background_image, (0, 0))
         pygame.display.flip()
 
-    # Initiate the first room
-    first_room = FirstRoom(inventory)
+    first_room = FirstRoom()
     first_room.run()
 
 if __name__ == "__main__":
