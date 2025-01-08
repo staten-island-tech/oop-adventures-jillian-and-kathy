@@ -16,6 +16,7 @@ class Lock():
         
         self.font = pygame.font.SysFont("Courier New", 25, bold = True)
         self.messages =  [f"It's a safe! To unlock it you have to enter a 4-digit code.",
+            "Use the code you recieved from the Caesar Cipher.",
             "Make sure to enter each digit one at a time."]
         self.correct_digits = [6, 2, 1, 5]
         self.current_digit = 0

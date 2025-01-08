@@ -1,7 +1,7 @@
-from keys import Key
+from key import Key
 
 class Inventory:
-    def __init__(self):
+    def __init__(self, keys):
         self.keys = []
 
     def add_key(self, key):
