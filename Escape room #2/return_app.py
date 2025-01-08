@@ -15,11 +15,10 @@ background_image = pygame.transform.scale(background_image, (screen_width, scree
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Escape Room #2")
 
-font = pygame.font.SysFont("Courier New", 35, bold = True)
+font = pygame.font.SysFont("Courier New", 50, bold = True)
 
 clickable_area1 = pygame.Rect(1300, 700, 150, 220)
 clickable_area2 = pygame.Rect(600, 700, 100, 80)
-clickable_area3 = pygame.Rect(750, 250, 250, 200)
 
 
 def slow_print(text, delay=0.01):
@@ -37,8 +36,8 @@ def slow_print(text, delay=0.01):
 
 def main():
     quotes = [
-        "Welcome to the second room,"
-        "you only have 3 minutes to find the key and escape"
+        "Welcome back!"
+        
         
     ]
 
@@ -70,33 +69,15 @@ def main():
                             game.run()
                         
 
-                    if clickable_area2.collidepoint(mouse_x, mouse_y):
+                    elif clickable_area2.collidepoint(mouse_x, mouse_y):
                         slow_print("You've found a paper!", 0.03)
                         time.sleep(0.5)
                         screen.blit(background_image, (0, 0))  
                         pygame.draw.rect(screen, (255, 255, 255), clickable_area2, 3)  
                         pygame.display.flip()
-                        from paper1 import Paper
-                        if __name__ == '__main__':
-                            game = Paper()
-                            game.main()
-                    
-                    if clickable_area3.collidepoint(mouse_x, mouse_y):
-                        slow_print("You've found the exit!", 0.03)
-                        time.sleep(0.5)
-                        screen.blit(background_image, (0, 0))
-                        pygame.draw.rect(screen, (255, 255, 255), clickable_area3, 3)
-                        pygame.display.flip()
-                        from door import Door
-                        if __name__ == '__main__':
-                            game = Door()
-                            game.main()
-
-
         screen.blit(background_image, (0, 0))
         pygame.draw.rect(screen, (255, 255, 255), clickable_area1, 3) 
         pygame.draw.rect(screen, (255, 255, 255), clickable_area2, 3) 
-        pygame.draw.rect(screen, (255, 255, 255), clickable_area3, 3)
         pygame.display.flip()
 
 
@@ -105,13 +86,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
- 
-
-
-
-
-    
-
-
-    
