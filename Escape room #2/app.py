@@ -38,7 +38,7 @@ def slow_print(text, delay=0.01):
 def main():
     quotes = [
         "Welcome to the second room,"
-        "you only have 3 minutes to find the key and escape"
+        "Find all the keys and escape!"
         
     ]
 
