@@ -74,37 +74,37 @@ class mainground:
                 pygame.display.flip()
 
             self.intro_shown = True  # Mark that the intro has been shown
-
+        clickit = True
         running = True
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    if event.button == 1:
-                        mouse_x, mouse_y = pygame.mouse.get_pos()
-
-                        if self.clickable_book.collidepoint(mouse_x, mouse_y):
-                            self.slow_print("You found the bookshelf!", 0.03)
-                            time.sleep(0.5)
-                            self.slow_print("Complete the final puzzle for the last key to escape.", 0.03)
-                            time.sleep(0.5)
-                            self.screen.blit(self.background_image, (0, 0))
-                            self.screen.blit(self.book_image, (0, 0))
-                            pygame.display.flip()
-                            self.slow_print("Collect all 11 blue squares in TEN SECONDS using arrow keys to move on.", 0.03)
-                            time.sleep(0.5)
-                            # Start the MiniPuzzleGame after clicking the book
-                            mini_game = MiniPuzzleGame(width=1920, height=1017, player_size=50, target_size=30, player_speed=7.3, num_targets=11)
-                            mini_game.game_loop(self.restart_puzzle, self.return_to_main)  # Pass both callbacks here
-                            self.slow_print("You gained 1 escape key!", 0.03)
-                            time.sleep(0.7)
-                            pygame.display.flip()
+                if event.type != pygame.MOUSEBUTTONDOWN:
+                    continue
+                if event.button != 1:
+                    continue
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                if self.clickable_book.collidepoint(mouse_x, mouse_y) and clickit == True:
+                    self.slow_print("You found the bookshelf!", 0.03)
+                    time.sleep(0.5)
+                    self.slow_print("Complete the final puzzle for the last key to escape.", 0.03)
+                    time.sleep(0.5)
+                    self.screen.blit(self.background_image, (0, 0))
+                    self.screen.blit(self.book_image, (0, 0))
+                    pygame.display.flip()
+                    self.slow_print("Collect all 11 blue squares in TEN SECONDS using arrow keys to move on.", 0.03)
+                    time.sleep(0.5)
+                    # Start the MiniPuzzleGame after clicking the book
+                    mini_game = MiniPuzzleGame(width=1920, height=1017, player_size=50, target_size=30, player_speed=7.3, num_targets=11)
+                    mini_game.game_loop(self.restart_puzzle, self.return_to_main)  # Pass both callbacks here
+                    self.slow_print("You gained 1 escape key!", 0.03)
+                    time.sleep(0.7)
+                    pygame.display.flip()
+                    clickit = False
 
             if not self.is_playing_puzzle:
                 self.screen.blit(self.background_image, (0, 0))
-                pygame.draw.rect(self.screen, (255, 0, 0), self.clickable_book, 3)
                 pygame.display.flip()
 
         pygame.quit()
