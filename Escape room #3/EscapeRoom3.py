@@ -102,7 +102,7 @@ class mainground:
                     time.sleep(0.7)
                     pygame.display.flip()
                     clickit = False
-
+                    
             if not self.is_playing_puzzle:
                 self.screen.blit(self.background_image, (0, 0))
                 pygame.display.flip()
