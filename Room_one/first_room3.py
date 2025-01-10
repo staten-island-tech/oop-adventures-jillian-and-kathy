@@ -44,16 +44,16 @@ def main():
         
 
     running = True
+    import tiles_game
+    tiles_game.main()
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
 
-        
     pygame.display.flip()
-    import tiles_game
-    tiles_game.main()
+
 
 
     pygame.quit()
