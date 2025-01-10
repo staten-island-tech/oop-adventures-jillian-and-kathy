@@ -1,7 +1,7 @@
 import pygame
 import sys
 import time
-""" from return_app import main """
+from door import main
 
 class Key():
     def __init__(self, inventory):
@@ -54,23 +54,13 @@ class Key():
                             self.screen.blit(self.background_image, (0, 0))  
                             pygame.draw.rect(self.screen, (255,255, 255), self.clickable_area1, 3) 
                             pygame.display.flip()
-"""                             from return_app import main
-                            if __name__ == '__main__':
+                            if name == '__main__':
                                 game = main()
-                                game.main() """
-class Inventory():
-    def __init__(self, item):
-        self.items = []
-    def add_item(self, item):
-        if item not in self.items:
-            self.items.append(item)
-    def has_item(self, item):
-        return item in self.items
+                                game.main()
+
 
 
 if __name__ == '__main__':
-    inventory = Inventory()
-    game = Key(inventory)
     game.main()
 
 
