@@ -66,9 +66,9 @@ class Puzzle1():
             self.draw_screen()
             if self.game_over:
                 pygame.time.delay(2000)
-                if name == '__main__':
-                    game = Key
-                    Key.main()
+                if __name__ == '__main__':
+                    game = Key()
+                    game.main()
 
 
 
