@@ -6,7 +6,6 @@ from door import main
 class Key():
     def __init__(self, inventory):
         pygame.init()
-        self.inventory = inventory
         self.screen_width = 1920
         self.screen_height = 1017
         self.background_image = pygame.image.load('key.jpg')  # Add your own background image
@@ -50,7 +49,6 @@ class Key():
                         if self.clickable_area1.collidepoint(mouse_x, mouse_y):
                             self.slow_print("You've equipped a key, press on the 'X' to exit", 0.03)
                             time.sleep(0.5)
-                            self.inventory.add_item('key')
                             self.screen.blit(self.background_image, (0, 0))  
                             pygame.draw.rect(self.screen, (255,255, 255), self.clickable_area1, 3) 
                             pygame.display.flip()

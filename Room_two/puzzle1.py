@@ -1,7 +1,7 @@
 import pygame
 import sys
 import time
-from key import Key, Inventory
+from key2 import Key
 
 class Puzzle1():
     def __init__(self):
@@ -66,11 +66,9 @@ class Puzzle1():
             self.draw_screen()
             if self.game_over:
                 pygame.time.delay(2000)
-                self.start_key(Inventory)
-                break
-    def start_key(self, Inventory):
-        key = Key(Inventory)
-        key.main()
+                if name == '__main__':
+                    game = Key
+                    Key.main()
 
 
 
