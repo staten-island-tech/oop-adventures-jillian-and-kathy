@@ -52,7 +52,6 @@ def main():
                 running = False
 
 
-        
     pygame.display.flip()
 
 
