@@ -1,10 +1,9 @@
 import pygame
 import sys
 import time
-from door import main
-
+from door import Door
 class Key():
-    def __init__(self, inventory):
+    def __init__(self):
         pygame.init()
         self.screen_width = 1920
         self.screen_height = 1017
@@ -52,14 +51,13 @@ class Key():
                             self.screen.blit(self.background_image, (0, 0))  
                             pygame.draw.rect(self.screen, (255,255, 255), self.clickable_area1, 3) 
                             pygame.display.flip()
-                            if name == '__main__':
-                                game = main()
+                            if __name__ == '__main__':
+                                game = Door()
                                 game.main()
 
 
 
 if __name__ == '__main__':
-    game.main()
-
-
+    key_game = Key()
+    key_game.main()
 
