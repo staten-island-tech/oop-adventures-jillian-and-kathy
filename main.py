@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-import time
-import pygame
-import sys
-from Escape_room3 import EscapeRoom3
-from Escape_room3 import bookpuzzle
-
-
-
+import os
 
 class User:
     def __init__(self, keys):
@@ -37,17 +29,15 @@ inventory.show_storage()
 inventory.clear_storage()
 
 inventory.show_storage()
-=======
-import os
 
 # Target directory
 target_dir = 'C:\Users\jillian.weingarten24\Documents\GitHub\oop-adventures-jillian-and-kathy\Room_one\EscapeRoom.py'
 
 # Dictionary of directories to iterate over
 directories = {
-    'Room_one': 'EscapeRoom.py',
-    'Room_two': 'app.py',
-    'Escape Room #3': 'EscapeRoom3.py'
+    'EscapeRoom.py',
+    'app.py',
+    'EscapeRoom3.py'
 }
 
 for directory, python_file in directories.items():
@@ -74,4 +64,3 @@ for directory, python_file in directories.items():
         os.system(f"python {python_file_path}")
     else:
         print(f"{directory} is not a valid directory")
->>>>>>> 25d6adfaa75e584c5bedba12eb7786bfdcf6f206

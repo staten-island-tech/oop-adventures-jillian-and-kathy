@@ -115,6 +115,3 @@ class mainground:
 
             
 
-if __name__ == "__main__":
-    game = mainground(screen, background_image, font, clickable_book, book_image)
-    game.main()
