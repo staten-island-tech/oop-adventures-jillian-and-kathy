@@ -2,8 +2,6 @@ import time
 import pygame
 import sys
 from puzzle1 import Puzzle1
-from key2 import Key
-from door import Door
 from paper1 import Paper
 pygame.init()
 
@@ -69,11 +67,6 @@ def main():
                         pygame.display.flip()
                         puzzle_game = Puzzle1()
                         puzzle_game.run()
-                        key_game = Key()
-                        key_game.main()
-                        door_game = Door()
-                        door_game.main()
-                        game.run()
                         
 
                     if clickable_area2.collidepoint(mouse_x, mouse_y):
@@ -82,8 +75,10 @@ def main():
                         screen.blit(background_image, (0, 0))  
                         pygame.draw.rect(screen, (255, 255, 255), clickable_area2, 3)  
                         pygame.display.flip()
-                        game = Paper()
-                        game.main()
+
+                        if __name__ == '__main__':
+                            game = Paper()
+                            game.main()
                     
 
 
