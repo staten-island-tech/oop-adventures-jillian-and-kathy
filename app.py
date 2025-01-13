@@ -2,13 +2,11 @@ import time
 import pygame
 import sys
 from puzzle1 import Puzzle1
-from key2 import Key
-from door import Door
 from paper1 import Paper
 pygame.init()
 
 
-#game code
+
 screen_width = 1920
 screen_height = 1017
 
@@ -69,12 +67,7 @@ def main():
                         pygame.display.flip()
                         puzzle_game = Puzzle1()
                         puzzle_game.run()
-                        if puzzle_game.game_over == True:  
-                            key_game = Key()
-                            key_game.main()
-                            door_game = Door()
-                            door_game.main()
-                            game.run()
+
                         
 
                     if clickable_area2.collidepoint(mouse_x, mouse_y):

@@ -2,6 +2,7 @@ import pygame
 import sys
 import time
 from door import Door
+
 class Key():
     def __init__(self):
         pygame.init()
@@ -46,14 +47,11 @@ class Key():
                     if event.button == 1:
                         mouse_x, mouse_y = pygame.mouse.get_pos() 
                         if self.clickable_area1.collidepoint(mouse_x, mouse_y):
-                            self.slow_print("You've equipped a key, press on the 'X' to exit", 0.03)
+                            self.slow_print("You've equipped a key...proceeding to the exit...", 0.03)
                             time.sleep(0.5)
-                            self.screen.blit(self.background_image, (0, 0))  
-                            pygame.draw.rect(self.screen, (255,255, 255), self.clickable_area1, 3) 
-                            pygame.display.flip()
-                            if __name__ == '__main__':
-                                game = Door()
-                                game.main()
+                            door_game = Door()
+                            door_game.main()
+
 
 
 

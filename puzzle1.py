@@ -61,19 +61,25 @@ class Puzzle1():
             else:
                 self.messages.append('Your guess is too high! Try again!')
     def run(self):
-        while True:
+        while not self.game_over:
             self.handle_input()
             self.draw_screen()
             if self.game_over:
-                pygame.time.delay(2000)
+                pygame.time.delay(1000)
+                key_game = Key()
+                key_game.main()
+                
+        
+    
+                
+
 
                     
 
 if __name__ == '__main__':
     puzzle_game = Puzzle1()
     puzzle_game.run()
-    key_game = Key()
-    key.main()
+
        
     
 
