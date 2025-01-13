@@ -14,16 +14,12 @@ class User:
     def show_storage(self):
         print(f"This is your {self.keys} inventory: {self.storage}")
 
-inventory = User("Escape Keys")
 
-inventory.add_storage("Room 1 Key")
-
-inventory.add_storage("Room 2 Key")
-
-inventory.add_storage("Room 3 Key")
-
-inventory.show_storage()
-
-inventory.clear_storage()
-
-inventory.show_storage()
+if __name__ == "__main__":
+    inventory = User("Escape Keys")
+    inventory.add_storage("Room 1 Key")
+    inventory.add_storage("Room 2 Key")
+    inventory.add_storage("Room 3 Key")
+    inventory.show_storage()
+    inventory.clear_storage()
+    inventory.show_storage()

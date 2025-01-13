@@ -1,7 +1,7 @@
 import time
 import pygame
 import sys
-from key import Key
+from user import User
 
 pygame.init()
 
@@ -28,10 +28,10 @@ def slow_print(text, delay=0.05):
 
 class FirstRoom4:
     def __init__(self):
-        self.key = Key("First Key")
+        self.user = User("First Key")
 
     def enter(self, inventory):
-        inventory.append(self.key)
+        inventory.append(self.user)
         slow_print("You have recieved a key!", 0.05)
         pygame.time.delay(1000)
         slow_print("Now you can unlock the door to the next room.", 0.05)
@@ -43,8 +43,8 @@ def main():
     first_room4.enter(inventory)
     slow_print("Your inventory contains:", 0.05)
     pygame.time.delay(1000)
-    for key in inventory:
-        slow_print(f"{str(key)}")
+    for user in inventory:
+        slow_print(f"{str(user)}")
         pygame.time.delay(1000)
 
     running = True

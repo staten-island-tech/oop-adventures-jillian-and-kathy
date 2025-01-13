@@ -98,7 +98,7 @@ if __name__ == "__main__":
 import time
 import pygame
 import sys
-from key import Key
+from user import User
 
 pygame.init()
 
