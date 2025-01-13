@@ -66,13 +66,15 @@ class Puzzle1():
             self.draw_screen()
             if self.game_over:
                 pygame.time.delay(2000)
-                return
+
+                    
+
 if __name__ == '__main__':
-    while True:
-        puzzle_game = Puzzle1()
-        puzzle_game.run()
-        key_game = Key()
-        key_game.main()
+    puzzle_game = Puzzle1()
+    puzzle_game.run()
+    key_game = Key()
+    key.main()
+       
     
 
     """ def get_all_digits():
