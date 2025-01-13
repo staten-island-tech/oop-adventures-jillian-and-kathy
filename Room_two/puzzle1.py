@@ -66,15 +66,15 @@ class Puzzle1():
             self.draw_screen()
             if self.game_over:
                 pygame.time.delay(2000)
-                if __name__ == '__main__':
-                    game = Key()
-                    game.main()
 
-
+                    
 
 if __name__ == '__main__':
-    game = Puzzle1()
-    game.run()
+    puzzle_game = Puzzle1()
+    puzzle_game.run()
+    key_game = Key()
+    key.main()
+       
     
 
     """ def get_all_digits():
