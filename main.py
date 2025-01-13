@@ -1,7 +1,7 @@
 import os
 
 # Target directory
-target_dir = 'Your target directory path'
+target_dir = 'C:\Users\jillian.weingarten24\Documents\GitHub\oop-adventures-jillian-and-kathy\Room_one\EscapeRoom.py'
 
 # Dictionary of directories to iterate over
 directories = {

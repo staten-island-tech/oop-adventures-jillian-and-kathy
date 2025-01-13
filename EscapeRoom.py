@@ -7,7 +7,7 @@ pygame.init()
 screen_width = 1920
 screen_height = 1017
 
-background_image = pygame.image.load('escape-room.jpg')  # Add your own background image
+background_image = pygame.image.load('escape-room.jpg')
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
 screen = pygame.display.set_mode((screen_width, screen_height))
@@ -16,7 +16,6 @@ pygame.display.set_caption("Escape Room")
 font = pygame.font.SysFont("Courier New", 25, bold = True, italic = True)
 
 def slow_print(text, delay=0.05):
-    """Prints text to the screen slowly, character by character."""
     current_text = ""
     for char in text:
         current_text += char
