@@ -69,11 +69,12 @@ def main():
                         pygame.display.flip()
                         puzzle_game = Puzzle1()
                         puzzle_game.run()
-                        key_game = Key()
-                        key_game.main()
-                        door_game = Door()
-                        door_game.main()
-                        game.run()
+                        if puzzle_game.game_over == True:  
+                            key_game = Key()
+                            key_game.main()
+                            door_game = Door()
+                            door_game.main()
+                            game.run()
                         
 
                     if clickable_area2.collidepoint(mouse_x, mouse_y):
