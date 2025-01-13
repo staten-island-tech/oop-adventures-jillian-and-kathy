@@ -2,7 +2,7 @@ import time
 import pygame
 import sys
 from bookpuzzle import MiniPuzzleGame
-from oop-adventures-jillian-and-kathy.user import User
+
 pygame.init()
 
 screen_width = 1920
@@ -20,8 +20,6 @@ pygame.display.set_caption("Escape Room")
 font = pygame.font.SysFont("Courier New", 34, bold=True, italic=True)
 
 clickable_book = pygame.Rect(1060, 280, 95, 120)
-
-inventory = User("Escape Keys")
 
 class mainground:
     def __init__(self, screen, background_image, font, clickable_book, book_image):
@@ -64,13 +62,13 @@ class mainground:
             "Welcome to the third and final escape room.",
             "Press on objects to play the puzzles and escape.",
             "In order to make it out, find all 3 keys by completing puzzles.",
-            "Who was here last? I think they left something."
+            "Who was here last? I think they were reading something."
         ]
 
         if not self.intro_shown:
             for quote in quotes:
                 self.slow_print(quote, 0.03)
-                time.sleep(0.5)
+                time.sleep(0.7)
                 self.screen.blit(self.background_image, (0, 0))
                 pygame.display.flip()
 
@@ -101,12 +99,8 @@ class mainground:
                     mini_game.game_loop(self.restart_puzzle, self.return_to_main)  # Pass both callbacks here
                     self.slow_print("You gained 1 escape key!", 0.03)
                     time.sleep(0.7)
-                    inventory.add_storage("Room 3 Key")
                     pygame.display.flip()
-                    
                     clickit = False
-
-                if User.self.storage == ["Room 3 Key"]:
                     self.slow_print("You have beat the escape room and won the game!", 0.03)
                     time.sleep(0.5)
                     self.slow_print("CONGRATSSS", 0.03)
@@ -121,6 +115,3 @@ class mainground:
 
             
 
-if __name__ == "__main__":
-    game = mainground(screen, background_image, font, clickable_book, book_image)
-    game.main()
