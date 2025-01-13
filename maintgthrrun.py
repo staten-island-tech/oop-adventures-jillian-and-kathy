@@ -1,3 +1,12 @@
+import time
+import pygame
+import sys
+from Escape_room3 import EscapeRoom3
+from Escape_room3 import bookpuzzle
+
+
+
+
 class User:
     def __init__(self, keys):
         self.keys = keys
