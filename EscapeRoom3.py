@@ -212,13 +212,13 @@ class MainGround:
                             mini_game = MiniPuzzleGame(width=1920, height=1017, player_size=50, target_size=30, player_speed=7.3, num_targets=11)
                             mini_game.game_loop(self.restart_puzzle, self.return_to_main)  # Pass both callbacks here
                             self.slow_print("You gained 1 escape key!", 0.03)
-                            time.sleep(0.7)
+                            time.sleep(1)
                             pygame.display.flip()
                             clickit = False
                             self.slow_print("You have beat the escape room and won the game!", 0.03)
-                            time.sleep(0.5)
+                            time.sleep(1)
                             self.slow_print("CONGRATSSS", 0.03)
-                            time.sleep(0.5)
+                            time.sleep(1)
                             pygame.quit()
                             sys.exit()
 
