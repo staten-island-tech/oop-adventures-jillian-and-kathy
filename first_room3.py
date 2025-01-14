@@ -16,7 +16,7 @@ pygame.display.set_caption("Escape Room")
 font = pygame.font.SysFont("Courier New", 30, bold = True, italic = True)
 
 
-def slow_print(text, delay=0.05):
+def slow_print(text, delay=0.03):
     current_text = ""
     for char in text:
         current_text += char
@@ -37,7 +37,7 @@ def main():
     ]
 
     for quote in quotes:
-        slow_print(quote, 0.05)
+        slow_print(quote, 0.03)
         time.sleep(1)
         screen.blit(background_image, (0, 0))
         pygame.display.flip()

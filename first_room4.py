@@ -16,7 +16,7 @@ pygame.display.set_caption("Escape Room")
 
 font = pygame.font.SysFont("Courier New", 30, bold = True, italic = True)
 
-def slow_print(text, delay=0.05):
+def slow_print(text, delay=0.03):
     current_text = ""
     for char in text:
         current_text += char
@@ -32,19 +32,19 @@ class FirstRoom4:
 
     def enter(self, inventory):
         inventory.append(self.user)
-        slow_print("You have received a key!", 0.05)
+        slow_print("You have received a key!", 0.03)
         pygame.time.delay(1000)
-        slow_print("Now you can unlock the door to the next room.", 0.05)
+        slow_print("Now you can unlock the door to the next room.", 0.03)
         pygame.time.delay(1000)
 
 def main():
     inventory = []
     first_room4 = FirstRoom4()
     first_room4.enter(inventory)
-    slow_print("Your inventory contains:", 0.05)
+    slow_print("Your inventory contains:", 0.03)
     pygame.time.delay(1000)
     for user in inventory:
-        slow_print(f"{user}", 0.05)
+        slow_print(f"{user}", 0.03)
         pygame.time.delay(1000)
 
     running = True
