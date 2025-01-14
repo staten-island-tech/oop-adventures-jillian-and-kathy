@@ -1,6 +1,5 @@
 import os
 
-<<<<<<< HEAD
 # List of Python files to run
 python_files = [
     'EscapeRoom.py',
@@ -8,11 +7,7 @@ python_files = [
     'EscapeRoom3.py'
 ]
 
-# Iterate over the list and run each file
-for file in python_files:
-    # Construct the absolute path to the Python file
-    file_path = os.path.join(os.getcwd(), file)
-=======
+# Class definition for User
 class User:
     def __init__(self, keys):
         self.keys = keys
@@ -29,42 +24,26 @@ class User:
     def show_storage(self):
         print(f"This is your {self.keys} inventory: {self.storage}")
 
+# Initialize user inventory
 inventory = User("Escape Keys")
-
 inventory.add_storage("Room 1 Key")
-
 inventory.add_storage("Room 2 Key")
-
 inventory.add_storage("Room 3 Key")
-
 inventory.show_storage()
-
 inventory.clear_storage()
-
 inventory.show_storage()
 
-# Target directory
-target_dir = 'C:\Users\jillian.weingarten24\Documents\GitHub\oop-adventures-jillian-and-kathy\Room_one\EscapeRoom.py'
+current_directory = os.getcwd()
 
-# Dictionary of directories to iterate over
-directories = {
-    'EscapeRoom.py',
-    'app.py',
-    'EscapeRoom3.py'
-}
-
-for directory, python_file in directories.items():
-    # Construct the full path to the directory
-    path = os.path.join(os.getcwd(), target_dir, directory)
->>>>>>> f3c83b75e17e21a3e458241c975afaf52041a289
+# Iterate over the list of Python files
+for python_file in python_files:
+    # Construct the full path to the Python file
+    file_path = os.path.join(current_directory, python_file)
     
     # Check if the file exists
     if os.path.isfile(file_path):
         print(f"Running {file_path}")
-        os.system(f"python {file_path}")
+        # Execute the Python file
+        os.system(f"python \"{file_path}\"")
     else:
-<<<<<<< HEAD
         print(f"{file_path} does not exist")
-=======
-        print(f"{directory} is not a valid directory")
->>>>>>> f3c83b75e17e21a3e458241c975afaf52041a289
