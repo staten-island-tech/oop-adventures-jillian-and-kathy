@@ -3,7 +3,7 @@ import random
 import sys
 
 class MiniPuzzleGame:
-    def __init__(self, width=800, height=600, player_size=50, target_size=30, player_speed=7.3, num_targets=11, time_limit=10000):
+    def __init__(self, width=800, height=600, player_size=50, target_size=30, player_speed=7.3, num_targets=11, time_limit=12000):
         pygame.init()
         self.width = width
         self.height = height

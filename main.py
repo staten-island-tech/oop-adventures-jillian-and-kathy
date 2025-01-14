@@ -27,7 +27,7 @@ class User:
 inventory = User("Escape Keys")
 
 inventory.clear_storage()
-inventory.show_storage()
+
 
 current_directory = os.getcwd()
 
@@ -42,5 +42,8 @@ for python_file in python_files:
         # Execute the Python file
         os.system(f"python \"{file_path}\"")
         inventory.add_storage("Key")
+        inventory.show_storage()
     else:
         print(f"{file_path} does not exist")
+
+
