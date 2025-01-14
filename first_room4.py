@@ -32,7 +32,7 @@ class FirstRoom4:
 
     def enter(self, inventory):
         inventory.append(self.user)
-        slow_print("You have recieved a key!", 0.05)
+        slow_print("You have received a key!", 0.05)
         pygame.time.delay(1000)
         slow_print("Now you can unlock the door to the next room.", 0.05)
         pygame.time.delay(1000)
