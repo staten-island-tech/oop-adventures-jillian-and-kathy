@@ -44,7 +44,7 @@ def main():
     slow_print("Your inventory contains:", 0.05)
     pygame.time.delay(1000)
     for user in inventory:
-        slow_print(f"{str(user)}")
+        slow_print(f"{user}", 0.05)
         pygame.time.delay(1000)
 
     running = True
