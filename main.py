@@ -24,12 +24,8 @@ class User:
     def show_storage(self):
         print(f"This is your {self.keys} inventory: {self.storage}")
 
-# Initialize user inventory
 inventory = User("Escape Keys")
-inventory.add_storage("Room 1 Key")
-inventory.add_storage("Room 2 Key")
-inventory.add_storage("Room 3 Key")
-inventory.show_storage()
+
 inventory.clear_storage()
 inventory.show_storage()
 
@@ -45,5 +41,6 @@ for python_file in python_files:
         print(f"Running {file_path}")
         # Execute the Python file
         os.system(f"python \"{file_path}\"")
+        inventory.add_storage("Key")
     else:
         print(f"{file_path} does not exist")
